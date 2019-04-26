@@ -24,7 +24,13 @@
             ],
             "styles": [
               "src/styles.css",
-               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+               "src/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css",
+               "src/assets/styles/main_styles.css",
+               "src/assets/styles/responsive.css",
+                "src/assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css",
+                "src/assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css",
+                "src/assets/plugins/OwlCarousel2-2.2.1/animate.css"
             ],
             "scripts": []
           },
