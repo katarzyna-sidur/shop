@@ -18,27 +18,26 @@ export interface Product {
 export class HomePageComponent implements OnInit, AfterViewInit {
 
     products: Product[] = [];
-    p = 1;
+    page = 0;
 
-    constructor(private db: AngularFireDatabase, private productService: ProductService) {
-        db.list<Product>('/products').snapshotChanges()
-            .pipe(map(e => e.map(el => el.payload.val())))
-            .subscribe(result => {
-                this.products = result;
-                console.log(this.products);
-            });
-    }
+    constructor(private db: AngularFireDatabase, private productService: ProductService) { }
 
     ngOnInit() {
-        const prod = this.productService.getProductsList();
-        prod.snapshotChanges().subscribe(data => {
-            data.forEach(item => {
-                const a = item.payload.toJSON();
-                a['$key'] = item.key;
-                this.products.push(a as Product);
+        this.loadMore();
+    }
+
+    loadMore() {
+        this.page += 1;
+        this.productService.getProductsList(this.page, 3).subscribe(result => {
+             this.products = [];
+            result.forEach(item => {
+                const obj = item.payload.toJSON();
+                obj['$key'] = item.key;
+                this.products.push(obj as Product);
             });
         });
     }
+
 
     ngAfterViewInit() {
         const homeSlider = $('.home_slider');
