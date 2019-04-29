@@ -49,5 +49,18 @@ export class ProductService {
         }
     }
 
+    getCategoryId(type: string) {
+        switch (type) {
+            case 'women':
+                return 1;
+            case 'men':
+                return 2;
+            case 'kids':
+                return 3;
+            default:
+                return 0;
+        }
+    }
+
 
 }

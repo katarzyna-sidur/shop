@@ -9,17 +9,24 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { TitleOverlayComponent } from './components/title-overlay/title-overlay.component';
+import { CategoryComponent } from './components/category/category.component';
 
 
 const appRoutes: Routes = [
     { path: 'home', component: HomePageComponent },
+    { path: 'category/:type', component: CategoryComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomePageComponent
+        HomePageComponent,
+        FooterComponent,
+        TitleOverlayComponent,
+        CategoryComponent
     ],
     imports: [
         BrowserModule,
