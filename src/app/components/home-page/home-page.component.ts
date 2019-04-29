@@ -2,13 +2,9 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import { ProductService } from '../../services/product.service';
+import { Product } from 'src/app/models/product.model';
 
 declare var $: any;
-
-export interface Product {
-    title: string;
-    price: number;
-}
 
 @Component({
     selector: 'app-home-page',
@@ -18,7 +14,9 @@ export interface Product {
 export class HomePageComponent implements OnInit, AfterViewInit {
 
     products: Product[] = [];
+    product: Product;
     page = 0;
+    category = 1;
 
     constructor(private db: AngularFireDatabase, private productService: ProductService) { }
 
@@ -28,16 +26,16 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
     loadMore() {
         this.page += 1;
-        this.productService.getProductsList(this.page, 3).subscribe(result => {
-             this.products = [];
-            result.forEach(item => {
-                const obj = item.payload.toJSON();
-                obj['$key'] = item.key;
-                this.products.push(obj as Product);
-            });
+        this.productService.getProductsList(this.page, 3, this.category).subscribe(result => {
+            this.products = result;
         });
     }
 
+    setCategory(categoryId: number) {
+        this.page = 0;
+        this.category = categoryId;
+        this.loadMore();
+    }
 
     ngAfterViewInit() {
         const homeSlider = $('.home_slider');
