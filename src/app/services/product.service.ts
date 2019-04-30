@@ -62,5 +62,10 @@ export class ProductService {
         }
     }
 
+    getProduct(id: string) {
+        this.product = this.db.object('products/' + id);
+        return this.product.valueChanges();
+    }
+
 
 }

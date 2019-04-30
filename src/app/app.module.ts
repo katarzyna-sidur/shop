@@ -12,11 +12,13 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TitleOverlayComponent } from './components/title-overlay/title-overlay.component';
 import { CategoryComponent } from './components/category/category.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 
 const appRoutes: Routes = [
     { path: 'home', component: HomePageComponent },
     { path: 'category/:type', component: CategoryComponent },
+    { path: 'product/:id', component: ProductPageComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
         HomePageComponent,
         FooterComponent,
         TitleOverlayComponent,
-        CategoryComponent
+        CategoryComponent,
+        ProductPageComponent
     ],
     imports: [
         BrowserModule,

@@ -21,7 +21,7 @@
                                         <div class="home_items">
                                             <div class="row">
                                                 <div class="col-sm-3 offset-lg-1">
-                                                    <div class="home_item_side"><a href="product.html"><img
+                                                    <div class="home_item_side"><a><img
                                                                 src="assets/images/home_1.jpg" alt=""></a></div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
@@ -41,10 +41,10 @@
                                                                 <div>
                                                                     <div>
                                                                         <div class="product_name"><a
-                                                                                href="product.html">Cool Clothing
+                                                                               >Cool Clothing
                                                                                 with Brown Stripes</a></div>
                                                                         <div class="product_category">In <a
-                                                                                href="category.html">Category</a>
+                                                                                >Category</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -82,7 +82,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <div class="home_item_side"><a href="product.html"><img
+                                                    <div class="home_item_side"><a><img
                                                                 src="assets/images/home_3.jpg" alt=""></a></div>
                                                 </div>
                                             </div>
@@ -107,7 +107,7 @@
                                         <div class="home_items">
                                             <div class="row">
                                                 <div class="col-sm-3 offset-lg-1">
-                                                    <div class="home_item_side"><a href="product.html"><img
+                                                    <div class="home_item_side"><a><img
                                                                 src="assets/images/home_1.jpg" alt=""></a></div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
@@ -127,10 +127,10 @@
                                                                 <div>
                                                                     <div>
                                                                         <div class="product_name"><a
-                                                                                href="product.html">Cool Clothing
+                                                                                >Cool Clothing
                                                                                 with Brown Stripes</a></div>
                                                                         <div class="product_category">In <a
-                                                                                href="category.html">Category</a>
+                                                                                >Category</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -168,7 +168,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <div class="home_item_side"><a href="product.html"><img
+                                                    <div class="home_item_side"><a><img
                                                                 src="assets/images/home_3.jpg" alt=""></a></div>
                                                 </div>
                                             </div>
@@ -193,7 +193,7 @@
                                         <div class="home_items">
                                             <div class="row">
                                                 <div class="col-sm-3 offset-lg-1">
-                                                    <div class="home_item_side"><a href="product.html"><img
+                                                    <div class="home_item_side"><a><img
                                                                 src="assets/images/home_1.jpg" alt=""></a></div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
@@ -213,10 +213,10 @@
                                                                 <div>
                                                                     <div>
                                                                         <div class="product_name"><a
-                                                                                href="product.html">Cool Clothing
+                                                                                >Cool Clothing
                                                                                 with Brown Stripes</a></div>
                                                                         <div class="product_category">In <a
-                                                                                href="category.html">Category</a>
+                                                                                >Category</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -254,7 +254,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <div class="home_item_side"><a href="product.html"><img
+                                                    <div class="home_item_side"><a><img
                                                                 src="assets/images/home_3.jpg" alt=""></a></div>
                                                 </div>
                                             </div>
@@ -279,7 +279,7 @@
                                         <div class="home_items">
                                             <div class="row">
                                                 <div class="col-sm-3 offset-lg-1">
-                                                    <div class="home_item_side"><a href="product.html"><img
+                                                    <div class="home_item_side"><a><img
                                                                 src="assets/images/home_1.jpg" alt=""></a></div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
@@ -299,10 +299,10 @@
                                                                 <div>
                                                                     <div>
                                                                         <div class="product_name"><a
-                                                                                href="product.html">Cool Clothing
+                                                                                >Cool Clothing
                                                                                 with Brown Stripes</a></div>
                                                                         <div class="product_category">In <a
-                                                                                href="category.html">Category</a>
+                                                                                >Category</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -340,7 +340,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <div class="home_item_side"><a href="product.html"><img
+                                                    <div class="home_item_side"><a><img
                                                                 src="assets/images/home_3.jpg" alt=""></a></div>
                                                 </div>
                                             </div>
@@ -409,9 +409,9 @@
                             <div class="product_info d-flex flex-row align-items-start justify-content-start">
                                 <div>
                                     <div>
-                                        <div class="product_name"><a href="product.html">{{product.name}}</a></div>
-                                        <div class="product_category">In <a
-                                                href="category.html">{{this.productService.getCategoryName(product.categoryId)}}</a>
+                                        <div class="product_name"><a (click)="viewProduct(product)" href="javascript:void(0)">{{product.name}}</a></div>
+                                        <div class="product_category">In <a (click)="gotoCategory(product)"
+                                                href="javascript:void(0)">{{this.productService.getCategoryName(product.categoryId)}}</a>
                                         </div>
                                     </div>
                                 </div>

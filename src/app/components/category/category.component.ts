@@ -18,7 +18,7 @@ export class CategoryComponent implements OnInit {
 
     products: Product[] = [];
 
-    constructor(private route: ActivatedRoute, private productServices: ProductService) { }
+    constructor(private route: ActivatedRoute, private productServices: ProductService, private router: Router) { }
 
     ngOnInit() {
         this.categoryTitle = this.route.snapshot.params['type'];
@@ -32,6 +32,11 @@ export class CategoryComponent implements OnInit {
             this.products = result;
         }
         );
+    }
+
+    viewProduct(product: Product) {
+        this.router.navigate(['/product/', product.$key], {
+        });
     }
 
 }

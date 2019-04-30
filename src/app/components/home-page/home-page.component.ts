@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import { ProductService } from '../../services/product.service';
 import { Product } from 'src/app/models/product.model';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -18,7 +19,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     page = 0;
     category = 1;
 
-    constructor(private db: AngularFireDatabase, private productService: ProductService) { }
+    constructor(private db: AngularFireDatabase, private productService: ProductService, private router: Router) { }
 
     ngOnInit() {
         this.loadMore();
@@ -28,6 +29,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         this.page += 1;
         this.productService.getProductsList(this.page, 3, this.category).subscribe(result => {
             this.products = result;
+            console.log(this.products);
         });
     }
 
@@ -35,6 +37,17 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         this.page = 0;
         this.category = categoryId;
         this.loadMore();
+    }
+
+    viewProduct(product: Product) {
+        this.router.navigate(['/product/', product.$key], {
+        });
+    }
+
+    gotoCategory(product: Product) {
+        const categoryTitle = this.productService.getCategoryName(product.categoryId);
+        const name = categoryTitle.charAt(0).toLowerCase() + categoryTitle.slice(1);
+        this.router.navigate(['/category', name]);
     }
 
     ngAfterViewInit() {
@@ -59,35 +72,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
                     mouseDrag: false
                 }
             }
-        });
-
-        if ($('.home_slider_nav_prev').length) {
-            const prev = $('.home_slider_nav_prev');
-            prev.on('click', function () {
-                homeSlider.trigger('prev.owl.carousel');
-            });
-        }
-
-        if ($('.home_slider_nav_next').length) {
-            const next = $('.home_slider_nav_next');
-            next.on('click', function () {
-                homeSlider.trigger('next.owl.carousel');
-            });
-        }
-
-        /* Custom dots events */
-        if ($('.home_slider_custom_dot').length) {
-            $('.home_slider_custom_dot').on('click', function () {
-                $('.home_slider_custom_dot').removeClass('active');
-                $(this).addClass('active');
-                homeSlider.trigger('to.owl.carousel', [$(this).index(), 1200]);
-            });
-        }
-
-        /* Change active class for dots when slide changes by nav or touch */
-        homeSlider.on('changed.owl.carousel', function (event) {
-            $('.home_slider_custom_dot').removeClass('active');
-            $('.home_slider_custom_dots li').eq(event.page.index).addClass('active');
         });
     }
 
