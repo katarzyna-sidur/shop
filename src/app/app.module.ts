@@ -14,6 +14,8 @@ import { TitleOverlayComponent } from './components/title-overlay/title-overlay.
 import { CategoryComponent } from './components/category/category.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { CardComponent } from './components/card/card.component';
+import { BsDropdownModule } from 'ngx-bootstrap';
+
 
 
 const appRoutes: Routes = [
@@ -43,7 +45,9 @@ const appRoutes: Routes = [
 
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule,
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+
+        BsDropdownModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

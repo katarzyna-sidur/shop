@@ -27,7 +27,6 @@ export class ProductPageComponent implements OnInit {
         const id = this.actRoute.snapshot.paramMap.get('id');
         this.productService.getProduct(id).subscribe((result) => {
             this.product = result;
-            console.log(this.product);
             this.categoryTitle = this.productService.getCategoryName(this.product.categoryId);
         });
     }

@@ -10,7 +10,6 @@ export class OrderService {
 
     private orderList: Array<Order> = [];
     private totalPrice: Subject<number> = new Subject<number>();
-    private totalPriceWithShipping: Subject<number> = new Subject<number>();
 
     private shippingOptions: Shipping[] =  [
         {id: 1, name: 'Next day delivery', price: 4.99},
@@ -56,6 +55,14 @@ export class OrderService {
     changeAmount(item: Order, value: number) {
         item.amount = item.amount + value;
 
+        this.totalPrice.next(this.sumTotal());
+    }
+
+    removeOrder(id: string) {
+        const i = this.orderList.findIndex(e => e.item.$key === id);
+        if (i !== -1) {
+            this.orderList.splice(i, 1);
+        }
         this.totalPrice.next(this.sumTotal());
     }
 

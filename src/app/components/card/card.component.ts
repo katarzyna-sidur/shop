@@ -3,6 +3,7 @@ import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/models/order.model';
 import { Shipping } from 'src/app/models/shipping.model';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
     selector: 'app-card',
@@ -18,7 +19,7 @@ export class CardComponent implements OnInit {
     shippingList = [];
 
     shipping = 3;
-    selectShipping: Shipping;
+    selectShipping: Shipping =  {id: 3, name: 'Personal Pickup', price: 0.00};
 
     constructor(private orderService: OrderService,  private router: Router) { }
 
@@ -43,5 +44,14 @@ export class CardComponent implements OnInit {
 
     backToCategory() {
         this.router.navigate(['/home']);
+    }
+
+    removeOrder(order: Order) {
+        this.orderService.removeOrder(order.item.$key);
+    }
+
+     viewProduct(product: Product) {
+        this.router.navigate(['/product/', product.$key], {
+        });
     }
 }

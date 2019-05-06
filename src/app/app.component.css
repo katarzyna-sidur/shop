@@ -1,3 +1,88 @@
 a.active {
     color: #2fce98;
 }
+
+ul.dropdown-menu.dropdown-menu-left {
+    width: 300px;
+}
+
+.list_img {
+    float: left;
+    width: 20%;
+    border: 1px solid #e0e0e0;
+    margin-right: 6%;
+    margin-left: 3%;
+
+}
+
+div.cart_box {
+    margin-bottom: 2%;
+}
+.list_desc {
+    float: left;
+    width: 60%;
+    color: #999;
+}
+
+div.list_desc > h4 {
+    margin-bottom: 1%;
+}
+
+div.list_desc > h4 > a {
+     color: black;
+}
+
+div.list_desc > h4 > a:hover {
+     color: #2fce98;
+}
+
+div.total_price {
+    text-align: right;
+    margin-right: 10%;
+}
+
+h4.cart_list_title {
+    padding: 10px;
+    background-color: #2fce98;
+    color: white;
+}
+
+li.cartprice {
+    background-color: #2fce98;
+    color: white;
+    padding: 5px;
+    font-size:18px;
+}
+
+.fa.fa-times{
+    cursor: pointer;
+    margin-right: 3%;
+    font-size: 18px;
+    float:right;
+}
+
+div.button.button_continue.trans_200 {
+    float: right;
+    margin-right: 3%;
+}
+
+.button a
+{
+	display: block;
+	line-height: 44px;
+	padding-left: 18px;
+	padding-right: 18px;
+	font-size: 18px;
+	font-weight: 700;
+	color: #FFFFFF;
+	text-transform: uppercase;
+}
+.button_continue
+{
+	background: #2fce98;
+}
+.button_continue:hover
+{
+	background: #000000;
+}
+

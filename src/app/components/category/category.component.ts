@@ -17,7 +17,6 @@ export class CategoryComponent implements OnInit {
 
     category: number;
     page = 0;
-    size: 'S';
 
     products: Product[] = [];
 
@@ -49,13 +48,9 @@ export class CategoryComponent implements OnInit {
         const order: Order = {
             amount: 1,
             item: product,
-            size: this.size
+            size: 'S'
         };
         this.orderService.addOrder(order);
-    }
-
-    goCard() {
-        this.router.navigate(['/card']);
     }
 
 }

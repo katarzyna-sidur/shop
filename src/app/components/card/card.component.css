@@ -472,3 +472,11 @@ input.input_amount {
     color: #4a4a4a;
     margin-top: 2px;
 }
+
+.fa.fa-minus-circle:hover {
+    color: red;
+}
+
+.pointer { 
+    cursor: pointer;
+}

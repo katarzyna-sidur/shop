@@ -20,7 +20,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     product: Product;
     page = 0;
     category = 1;
-    size: 'S';
 
     constructor(private db: AngularFireDatabase,
     private productService: ProductService,
@@ -35,7 +34,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         this.page += 1;
         this.productService.getProductsList(this.page, 3, this.category).subscribe(result => {
             this.products = result;
-            console.log(this.products);
         });
     }
 
@@ -60,13 +58,9 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         const order: Order = {
             amount: 1,
             item: product,
-            size: this.size
+            size: 'S'
         };
         this.orderService.addOrder(order);
-    }
-
-    goCard() {
-        this.router.navigate(['/card']);
     }
 
     ngAfterViewInit() {
