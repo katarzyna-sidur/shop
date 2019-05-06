@@ -11,48 +11,47 @@
 
                 <!-- Product Image -->
                 <div class="col-lg-6">
-                    <img [src]="product.photo" />
+                    <img [src]="product?.photo" />
                 </div>
 
                 <!-- Product Info -->
                 <div class="col-lg-6 product_col">
                     <div class="product_info">
-                        <div class="product_name">{{product.name}}</div>
+                        <div class="product_name">{{product?.name}}</div>
                         <div class="product_category">In <a (click)="gotoCategory()" href="javascripr:view(0)">{{categoryTitle}}</a></div>
                         <div class="product_rating_container d-flex flex-row align-items-center justify-content-start">
                             <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
                             <div class="product_reviews">4.7 out of (3514)</div>
                             <div class="product_reviews_link"><a href="#">Reviews</a></div>
                         </div>
-                        <div class="product_price">${{product.price}}</div>
+                        <div class="product_price">${{product?.price}}</div>
                         <div class="product_size">
                             <div class="product_size_title">Select Size</div>
                             <ul class="d-flex flex-row align-items-start justify-content-start">
                                 <li>
-                                    <input type="radio" id="radio_1" disabled name="product_radio"
-                                        class="regular_radio radio_1">
+                                    <input type="radio" id="radio_1" name="product_radio"
+                                        class="regular_radio radio_1" value="XS" [(ngModel)]="size">
                                     <label for="radio_1">XS</label>
                                 </li>
                                 <li>
-                                    <input type="radio" id="radio_2" name="product_radio" class="regular_radio radio_2"
-                                        checked>
+                                    <input type="radio" id="radio_2" name="product_radio" class="regular_radio radio_2"  value="S" [(ngModel)]="size">
                                     <label for="radio_2">S</label>
                                 </li>
                                 <li>
-                                    <input type="radio" id="radio_3" name="product_radio" class="regular_radio radio_3">
+                                    <input type="radio" id="radio_3" name="product_radio" class="regular_radio radio_3"  value="M"  [(ngModel)]="size">
                                     <label for="radio_3">M</label>
                                 </li>
                                 <li>
-                                    <input type="radio" id="radio_4" name="product_radio" class="regular_radio radio_4">
+                                    <input type="radio" id="radio_4" name="product_radio" class="regular_radio radio_4"  value="L" [(ngModel)]="size">
                                     <label for="radio_4">L</label>
                                 </li>
                                 <li>
-                                    <input type="radio" id="radio_5" name="product_radio" class="regular_radio radio_5">
+                                    <input type="radio" id="radio_5" name="product_radio" class="regular_radio radio_5"  value="XL"   [(ngModel)]="size">
                                     <label for="radio_5">XL</label>
                                 </li>
                                 <li>
-                                    <input type="radio" id="radio_6" disabled name="product_radio"
-                                        class="regular_radio radio_6">
+                                    <input type="radio" id="radio_6" name="product_radio"
+                                        class="regular_radio radio_6"  value="XXL" [(ngModel)]="size">
                                     <label for="radio_6">XXL</label>
                                 </li>
                             </ul>
@@ -76,7 +75,7 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                    class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center" (click)="saveOrder(); goCard()">
                                     <div>
                                         <div><img src="assets/images/cart.svg" class="svg" alt="">
                                             <div>+</div>

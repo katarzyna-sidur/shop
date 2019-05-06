@@ -13,12 +13,14 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TitleOverlayComponent } from './components/title-overlay/title-overlay.component';
 import { CategoryComponent } from './components/category/category.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { CardComponent } from './components/card/card.component';
 
 
 const appRoutes: Routes = [
     { path: 'home', component: HomePageComponent },
     { path: 'category/:type', component: CategoryComponent },
     { path: 'product/:id', component: ProductPageComponent },
+    { path: 'card', component: CardComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -29,7 +31,8 @@ const appRoutes: Routes = [
         FooterComponent,
         TitleOverlayComponent,
         CategoryComponent,
-        ProductPageComponent
+        ProductPageComponent,
+        CardComponent
     ],
     imports: [
         BrowserModule,

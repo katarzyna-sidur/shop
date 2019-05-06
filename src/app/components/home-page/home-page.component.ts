@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { ProductService } from '../../services/product.service';
 import { Product } from 'src/app/models/product.model';
 import { Router } from '@angular/router';
+import { Order } from 'src/app/models/order.model';
+import { OrderService } from 'src/app/services/order.service';
 
 declare var $: any;
 
@@ -18,8 +20,12 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     product: Product;
     page = 0;
     category = 1;
+    size: 'S';
 
-    constructor(private db: AngularFireDatabase, private productService: ProductService, private router: Router) { }
+    constructor(private db: AngularFireDatabase,
+    private productService: ProductService,
+    private router: Router,
+    private orderService: OrderService) { }
 
     ngOnInit() {
         this.loadMore();
@@ -48,6 +54,19 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         const categoryTitle = this.productService.getCategoryName(product.categoryId);
         const name = categoryTitle.charAt(0).toLowerCase() + categoryTitle.slice(1);
         this.router.navigate(['/category', name]);
+    }
+
+    saveOrder(product: Product) {
+        const order: Order = {
+            amount: 1,
+            item: product,
+            size: this.size
+        };
+        this.orderService.addOrder(order);
+    }
+
+    goCard() {
+        this.router.navigate(['/card']);
     }
 
     ngAfterViewInit() {
