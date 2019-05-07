@@ -65,9 +65,9 @@
                     </form>
                 </div>
                 <!-- User -->
-                <div class="user"><a href="#">
+                <div class="user"><a routerLink="/favourite" routerLinkActive="active">
                         <div><img src="assets/images/heart_2.svg" alt="https://www.flaticon.com/authors/freepik">
-                            <div>1</div>
+                            <div [hidden]="!favouriteList.length != 0">{{favouriteList.length}}</div>
                         </div>
                     </a></div>
                 <!-- Cart -->

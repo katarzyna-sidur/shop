@@ -48,4 +48,8 @@ export class ProductPageComponent implements OnInit {
     goCard() {
         this.router.navigate(['/card']);
     }
+
+    addToFavourities(product: Product) {
+        this.productService.addToFavourities(product);
+    }
 }

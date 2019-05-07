@@ -1,0 +1,85 @@
+<div class="super_container_inner">
+    <div class="super_overlay"></div>
+
+    <!-- Home -->
+
+    <app-title-overlay [pageTitle]="pageTitle" [categoryTitle]="categoryTitle | uppercase"></app-title-overlay>
+
+    <!-- Favourite -->
+
+    <div class="Favourite_section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="Favourite_container">
+
+                        <!-- Favourite Bar -->
+                        <div class="Favourite_bar">
+                            <ul
+                                class="Favourite_bar_list item_list d-flex flex-row align-items-center justify-content-end">
+                                <li class="mr-auto">Product</li>
+                                <li>Price</li>
+                                <li>Add to cart</li>
+                                <li>Remove</li>
+                            </ul>
+                        </div>
+
+                        <!-- Favourite Items -->
+                        <div class="Favourite_items">
+                            <ul class="Favourite_items_list">
+
+                                <!-- Favourite Item -->
+                                <li class="Favourite_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start"
+                                    *ngFor="let favProduct of favouriteProductList">
+                                    <div
+                                        class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
+                                        <div>
+                                            <div class="product_image"><img [src]="favProduct.photo" alt=""></div>
+                                        </div>
+                                        <div class="product_name_container">
+                                            <div class="product_name"><a (click)="viewProduct(favProduct)"
+                                                    href="javascript:view(0)">{{favProduct.name}}</a></div>
+                                            <div class="product_text">Second line for additional info</div>
+                                        </div>
+                                    </div>
+                                    <div class="product_price product_text"><span>Price: </span>${{favProduct.price}}
+                                    </div>
+                                    <div class="product_quantity_container">
+                                        <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center"
+                                            (click)="FromFavToCart(favProduct)">
+                                            <div>
+                                                <div><img src="assets/images/cart.svg" class="svg" alt="">
+                                                    <div>+</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="product_number"><i class="fa fa-times pointer"
+                                                (click)="removeFromList(favProduct)"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Favourite Buttons -->
+                        <div class="Favourite_buttons d-flex flex-row align-items-start justify-content-start">
+                            <div
+                                class="Favourite_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                <div class="button button_continue trans_200"><a (click)="backToCategory()"
+                                        href="javascript:view(0)">continue shopping</a></div>
+                                <div class="button button_clear trans_200"><a (click)="goCard()" href="javascript:view(0)">go to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+
+
+</div>

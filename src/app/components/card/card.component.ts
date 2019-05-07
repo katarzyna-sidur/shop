@@ -21,6 +21,7 @@ export class CardComponent implements OnInit {
     shipping = 3;
     selectShipping: Shipping =  {id: 3, name: 'Personal Pickup', price: 0.00};
 
+
     constructor(private orderService: OrderService,  private router: Router) { }
 
     ngOnInit() {

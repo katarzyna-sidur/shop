@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { OrderService } from './services/order.service';
 import { Order } from './models/order.model';
 import { Product } from './models/product.model';
+import { ProductService } from './services/product.service';
 
 @Component({
     selector: 'app-root',
@@ -14,8 +15,9 @@ export class AppComponent implements OnInit {
      title = 'shop';
      orderlist: Array<Order>;
      cartTotalSum = 0;
+     favouriteList: Array<Product>;
 
-    constructor(private router: Router, private orderService: OrderService) {
+    constructor(private router: Router, private orderService: OrderService, private productService: ProductService) {
         this.router.routeReuseStrategy.shouldReuseRoute = () => {
             return false;
         };
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit {
         this.orderService.sumTotal$().subscribe((result) => {
             this.cartTotalSum = result;
         });
+        this.favouriteList = this.productService.getFavourities();
     }
 
      removeOrder(order: Order) {

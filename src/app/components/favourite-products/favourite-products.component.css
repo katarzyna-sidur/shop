@@ -1,0 +1,291 @@
+.Favourite_section
+{
+	width: 100%;
+	background: #FFFFFF;
+	padding-top: 68px;
+	padding-bottom: 100px;
+}
+.Favourite_bar
+{
+	width: 100%;
+	padding-bottom: 28px;
+	border-bottom: solid 1px #ededed;
+}
+.Favourite_bar_list
+{
+	display: block;
+}
+.Favourite_bar_list li
+{
+	font-family: 'Open Sans', sans-serif;
+	width: 88px;
+	font-size: 16px;
+	font-weight: 400;
+	color: #000000;
+}
+.Favourite_bar_list li:first-child
+{
+	width: auto;
+}
+.Favourite_bar_list li:not(:first-child):not(:last-child)
+{
+	margin-right: 40px;
+}
+.item_list > *:first-child
+{
+	text-align: left;
+}
+.Favourite_items_list
+{
+	display: block;
+}
+.Favourite_item
+{
+	 width: 100%;
+	 height: 126px;
+	 padding-top: 23px;
+	 padding-bottom: 23px;
+	 border-bottom: solid 1px #ededed;
+}
+.Favourite_item > div:not(:first-child)
+{
+	width: 88px;
+}
+.Favourite_item > div:not(:first-child):not(:last-child)
+{
+	margin-right: 40px;
+}
+.product
+{
+	height: 100%;
+    margin-bottom:0;
+}
+
+.product_image
+{
+	width: 67px;
+	height: 75px;
+}
+.product_image img
+{
+	max-width: 100%;
+}
+.product_number
+{
+	width: 98px;
+	padding-left: 23px;
+	font-size: 18px;
+	font-weight: 300;
+	color: #4a4a4a;
+}
+.product_name_container
+{
+	padding-left: 30px;
+}
+.product_name a
+{
+	font-size: 18px;
+	color: #4a4a4a;
+	font-weight: 500;
+}
+.product_name a:hover
+{
+	color: #2fce98;
+}
+.product_text
+{
+	font-size: 14px;
+	font-weight: 400;
+	color: #4a4a4a;
+}
+.product_color
+{
+	text-transform: uppercase;
+}
+.product_price
+{
+	font-size: 16px !important;
+    margin-top: 0 !important;
+}
+.product_total
+{
+	font-size: 16px !important;
+	font-weight: 500 !important;
+}
+.product_text
+{
+	font-size: 14px;
+	font-weight: 300;
+	color: #4a4a4a;
+}
+.product_quantity
+{
+	width: 68px;
+	height: 32px;
+	border: solid 2px #969696;
+	border-radius: 3px;
+}
+.product_quantity > span
+{
+	line-height: 28px;
+	font-size: 16px;
+	font-weight: 300;
+	color: #4a4a4a;
+	text-align: center;
+}
+.qty_button
+{
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	width: 22px;
+	height: 100%;
+	line-height: 28px;
+	cursor: pointer;
+	font-size: 16px;
+	color: #414141;
+}
+.qty_button span
+{
+	-webkit-user-select: none;     
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.qty_button:hover
+{
+	color: #bbe432;
+}
+.qty_sub
+{
+	left: 0px;
+}
+.qty_add
+{
+	right: 0px;
+}
+.product_text > span
+{
+	display: none;
+}
+.Favourite_buttons
+{
+	margin-top: 30px;
+}
+.button
+{
+	height: 44px;
+	text-align: center;
+	margin-bottom: 10px;
+	border-radius: 3px;
+    border: none;
+    width: 220px;
+}
+.button:not(:last-child)
+{
+	margin-right: 21px;
+}
+.button a
+{
+	display: block;
+	line-height: 44px;
+	padding-left: 18px;
+	padding-right: 18px;
+	font-size: 18px;
+	font-weight: 700;
+	color: #FFFFFF;
+	text-transform: uppercase;
+}
+.button_continue
+{
+	background: #2fce98;
+}
+.button_continue:hover
+{
+	background: #000000;
+}
+.button_clear
+{
+	background: #b2b2b2;
+}
+.button_clear:hover
+{
+	background: #414141;
+}
+.button_clear:hover a
+{
+	color: #FFFFFF;
+}
+.Favourite_extra_row
+{
+	margin-top: 53px;
+}
+
+.Favourite_extra_content
+{
+	background: #f8f8f8;
+	padding-top: 51px;
+	padding-left: 68px;
+	padding-right: 82px;
+}
+.Favourite_extra_coupon
+{
+	padding-bottom: 54px;
+}
+.Favourite_extra_title
+{
+	font-size: 24px;
+	font-weight: 700;
+	color: #4a4a4a;
+	line-height: 0.75;
+}
+
+.checkout_button
+{
+	width: 100%;
+	height: 44px;
+	text-align: center;
+	background: #2fce98;
+	border-radius: 3px;
+	margin-top: 70px;
+}
+.checkout_button a
+{
+	display: block;
+	font-size: 18px;
+	font-weight: 700;
+	color: #FFFFFF;
+	line-height: 44px;
+	text-transform: uppercase;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.checkout_button:hover
+{
+	background: #4a4a4a;
+}
+
+input.input_amount {
+    border: none;
+    width: 50%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+    color: #4a4a4a;
+    margin-top: 2px;
+}
+
+.fa.fa-times:hover {
+    color: red;
+}
+
+.pointer { 
+    cursor: pointer;
+}

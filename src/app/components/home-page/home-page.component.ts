@@ -63,6 +63,10 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         this.orderService.addOrder(order);
     }
 
+    addToFavourities(product: Product) {
+        this.productService.addToFavourities(product);
+    }
+
     ngAfterViewInit() {
         const homeSlider = $('.home_slider');
         homeSlider.owlCarousel({

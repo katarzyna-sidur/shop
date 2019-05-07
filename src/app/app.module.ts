@@ -15,6 +15,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { CardComponent } from './components/card/card.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { FavouriteProductsComponent } from './components/favourite-products/favourite-products.component';
 
 
 
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
     { path: 'category/:type', component: CategoryComponent },
     { path: 'product/:id', component: ProductPageComponent },
     { path: 'card', component: CardComponent },
+    { path: 'favourite', component: FavouriteProductsComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
         TitleOverlayComponent,
         CategoryComponent,
         ProductPageComponent,
-        CardComponent
+        CardComponent,
+        FavouriteProductsComponent
     ],
     imports: [
         BrowserModule,

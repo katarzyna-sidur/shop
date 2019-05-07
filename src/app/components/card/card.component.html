@@ -56,7 +56,6 @@
 							<!-- Cart Buttons -->
 							<div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
 								<div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
-									<div class="button button_clear trans_200"><a href="categories.html">clear cart</a></div>
 									<div class="button button_continue trans_200"><a (click)="backToCategory()" href="javascript:view(0)">continue shopping</a></div>
 								</div>
 							</div>
@@ -98,7 +97,7 @@
 								<ul class="cart_extra_total_list">
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Subtotal</div>
-										<div class="cart_extra_total_value ml-auto">{{getTotalPrice()}}</div>
+										<div class="cart_extra_total_value ml-auto">${{getTotalPrice()}}</div>
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Shipping</div>
@@ -106,7 +105,7 @@
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Total</div>
-										<div class="cart_extra_total_value ml-auto">${{getTotalPrice() + selectShipping.price}}</div>
+										<div class="cart_extra_total_value ml-auto">${{getTotalPrice() + selectShipping.price | number : '1.2-2'}}</div>
 									</li>
 								</ul>
 								<div class="checkout_button trans_200"><a href="checkout.html">proceed to checkout</a></div>

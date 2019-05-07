@@ -49,7 +49,7 @@ export class OrderService {
         this.orderList.forEach((item) => {
             total += item.item.price * item.amount;
         });
-        return total;
+        return total = Math.round(total * 100) / 100;
     }
 
     changeAmount(item: Order, value: number) {

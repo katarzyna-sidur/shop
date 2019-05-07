@@ -53,4 +53,8 @@ export class CategoryComponent implements OnInit {
         this.orderService.addOrder(order);
     }
 
+    addToFavourities(product: Product) {
+        this.productServices.addToFavourities(product);
+    }
+
 }
