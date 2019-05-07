@@ -85,4 +85,9 @@ div.button.button_continue.trans_200 {
 {
 	background: #000000;
 }
-
+@media only screen and (max-width: 991px) {
+    ul.dropdown-menu.dropdown-menu-left {
+        position: absolute;
+        left: -260px !important;
+    }
+}

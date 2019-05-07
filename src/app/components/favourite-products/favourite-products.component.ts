@@ -45,4 +45,8 @@ export class FavouriteProductsComponent implements OnInit {
      goCard() {
         this.router.navigate(['/card']);
     }
+
+    backToCategory() {
+        this.router.navigate(['/home']);
+    }
 }
