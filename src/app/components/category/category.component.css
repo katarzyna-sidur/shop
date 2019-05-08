@@ -131,6 +131,10 @@
 {
 	background: #FFFFFF;
 	padding-bottom: 82px;
+    padding-top:0;
+}
+.products_row {
+        margin-top: 0px;
 }
 .product
 {

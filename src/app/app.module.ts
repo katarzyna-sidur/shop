@@ -16,6 +16,7 @@ import { ProductPageComponent } from './components/product-page/product-page.com
 import { CardComponent } from './components/card/card.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { FavouriteProductsComponent } from './components/favourite-products/favourite-products.component';
+import { ContactPageComponent } from './components/contact-page/contact-page.component';
 
 
 
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
     { path: 'product/:id', component: ProductPageComponent },
     { path: 'card', component: CardComponent },
     { path: 'favourite', component: FavouriteProductsComponent },
+    { path: 'contact', component: ContactPageComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
         CategoryComponent,
         ProductPageComponent,
         CardComponent,
-        FavouriteProductsComponent
+        FavouriteProductsComponent,
+        ContactPageComponent,
     ],
     imports: [
         BrowserModule,
@@ -50,7 +53,7 @@ const appRoutes: Routes = [
         AngularFirestoreModule,
         AngularFireDatabaseModule,
 
-        BsDropdownModule.forRoot()
+        BsDropdownModule.forRoot(),
     ],
     providers: [],
     bootstrap: [AppComponent]
