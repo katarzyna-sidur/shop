@@ -1,0 +1,65 @@
+<div class="super_container_inner">
+    <div class="super_overlay"></div>
+
+    <!-- Home -->
+    <app-title-overlay [pageTitle]="pageTitle" [categoryTitle]="categoryTitle | uppercase"></app-title-overlay>
+
+
+    <div class="container-fluid">
+        <div class="row products_row">
+
+            <!-- Product -->
+            <div class="col-xl-4 col-md-6" *ngFor="let product of searchResult">
+                <div class="product">
+                    <div class="product_image"><img [src]="product.photo" alt=""></div>
+                    <div class="product_content">
+                        <div class="product_info d-flex flex-row align-items-start justify-content-start">
+                            <div>
+                                <div>
+                                    <div class="product_name"><a (click)="viewProduct(product)"
+                                            href="javascript:void(0)">{{product.name}}</a></div>
+                                    <div class="product_category">In <a (click)="gotoCategory(product)"
+                                            href="javascript:void(0)">{{this.productService.getCategoryName(product.categoryId)}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ml-auto text-right">
+                                <div class="rating_r rating_r_4 home_item_rating">
+                                    <i></i><i></i><i></i><i></i><i></i></div>
+                                <div class="product_price text-right">{{product.price}}</div>
+                            </div>
+                        </div>
+                        <div class="product_buttons">
+                            <div class="text-right d-flex flex-row align-items-start justify-content-start">
+                                <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center"
+                                    (click)="addToFavourities(product)">
+                                    <div>
+                                        <div><img src="assets/images/heart_2.svg" class="svg" alt="">
+                                            <div>+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center"
+                                    (click)="saveOrder(product)">
+                                    <div>
+                                        <div><img src="assets/images/cart.svg" class="svg" alt="">
+                                            <div>+</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="searchResult.length === 0">
+                <hr>
+                <p>
+                    No results found :(
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>

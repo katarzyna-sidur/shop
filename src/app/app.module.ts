@@ -14,9 +14,10 @@ import { TitleOverlayComponent } from './components/title-overlay/title-overlay.
 import { CategoryComponent } from './components/category/category.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { CardComponent } from './components/card/card.component';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TypeaheadModule } from 'ngx-bootstrap';
 import { FavouriteProductsComponent } from './components/favourite-products/favourite-products.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     { path: 'card', component: CardComponent },
     { path: 'favourite', component: FavouriteProductsComponent },
     { path: 'contact', component: ContactPageComponent },
+    { path: 'search/:term', component: SearchComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -41,6 +43,7 @@ const appRoutes: Routes = [
         CardComponent,
         FavouriteProductsComponent,
         ContactPageComponent,
+        SearchComponent,
     ],
     imports: [
         BrowserModule,
@@ -54,6 +57,7 @@ const appRoutes: Routes = [
         AngularFireDatabaseModule,
 
         BsDropdownModule.forRoot(),
+        TypeaheadModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

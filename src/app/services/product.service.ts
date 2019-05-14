@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 import { AngularFireDatabase, AngularFireList, AngularFireObject, } from '@angular/fire/database';
 import { take, map } from 'rxjs/operators';
-import { Order } from '../models/order.model';
 
 @Injectable({
     providedIn: 'root'
@@ -12,10 +11,12 @@ export class ProductService {
     products: AngularFireList<Product[]> = null;
     product: AngularFireObject<Product> = null;
 
+    searchProducts: AngularFireList<Product[]> = null;
+
     private FavouriteProductsList: Array<Product> = [];
 
-
-    constructor(private db: AngularFireDatabase) { }
+    constructor(private db: AngularFireDatabase) {
+    }
 
     getProductsList(page: number = 1, size: number = 1, category: number) {
         const total = page * size;
@@ -79,10 +80,27 @@ export class ProductService {
     }
 
     removeFavProd(id: string) {
-         const i = this.FavouriteProductsList.findIndex(e => e.$key === id);
+        const i = this.FavouriteProductsList.findIndex(e => e.$key === id);
         if (i !== -1) {
             this.FavouriteProductsList.splice(i, 1);
         }
     }
+
+    getSearchProducts() {
+        this.searchProducts = this.db.list('products'
+        );
+        return this.searchProducts.snapshotChanges()
+            .pipe(
+                take(1),
+                map(e => {
+                    return e.map(el => {
+                        const obj = el.payload.toJSON();
+                        obj['$key'] = el.key;
+                        return obj as Product;
+                    });
+                }),
+            );
+    }
+
 
 }

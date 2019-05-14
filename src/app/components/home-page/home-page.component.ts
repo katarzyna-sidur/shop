@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { map } from 'rxjs/operators';
 import { ProductService } from '../../services/product.service';
 import { Product } from 'src/app/models/product.model';
 import { Router } from '@angular/router';

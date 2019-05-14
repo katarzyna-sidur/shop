@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
+
+
 
 @Component({
     selector: 'app-category',
@@ -20,12 +22,10 @@ export class CategoryComponent implements OnInit {
 
     products: Product[] = [];
 
-    sortOption = 3;
-
     constructor(private route: ActivatedRoute,
-    private productServices: ProductService,
-    private router: Router,
-    private orderService: OrderService) { }
+        private productServices: ProductService,
+        private router: Router,
+        private orderService: OrderService) { }
 
     ngOnInit() {
         this.categoryTitle = this.route.snapshot.params['type'];
@@ -58,33 +58,4 @@ export class CategoryComponent implements OnInit {
     addToFavourities(product: Product) {
         this.productServices.addToFavourities(product);
     }
-
-    sortProductList(option: number) {
-        if (option === 1) {
-            return this.products.sort((a, b) => {
-                if (a.name > b.name) {
-                    return -1;
-                } else if (a.name < b.name) {
-                    return 1;
-                } else if (a.name === b.name) {
-                    return 0;
-                }
-            });
-        }
-        if (option === 2) {
-            return this.products.sort((a, b) => {
-                if (a.price > b.price) {
-                    return -1;
-                } else if (a.price < b.price) {
-                    return 1;
-                } else if (a.price === b.price) {
-                    return 0;
-                }
-            });
-        }
-        if (option === 3) {
-            return this.loadMore();
-        }
-    }
-
 }
