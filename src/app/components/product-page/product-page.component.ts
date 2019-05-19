@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
+import { OrderItem } from 'src/app/models/orderItem.model';
 
 @Component({
     selector: 'app-product-page',
@@ -36,13 +37,13 @@ export class ProductPageComponent implements OnInit {
         this.router.navigate(['/category', name]);
     }
 
-    saveOrder() {
-        const order: Order = {
+      saveOrder(product: Product) {
+        const order: OrderItem = {
             amount: 1,
-            item: this.product,
-            size: this.size
+            product: product,
+            size: 'S'
         };
-        this.orderService.addOrder(order);
+        this.orderService.addProduct(order);
     }
 
     goCard() {

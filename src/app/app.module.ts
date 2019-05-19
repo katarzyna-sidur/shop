@@ -18,6 +18,7 @@ import { BsDropdownModule, TypeaheadModule } from 'ngx-bootstrap';
 import { FavouriteProductsComponent } from './components/favourite-products/favourite-products.component';
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { SearchComponent } from './components/search/search.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
     { path: 'favourite', component: FavouriteProductsComponent },
     { path: 'contact', component: ContactPageComponent },
     { path: 'search/:term', component: SearchComponent },
+    { path: 'checkout', component: CheckoutComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -44,6 +46,7 @@ const appRoutes: Routes = [
         FavouriteProductsComponent,
         ContactPageComponent,
         SearchComponent,
+        CheckoutComponent,
     ],
     imports: [
         BrowserModule,

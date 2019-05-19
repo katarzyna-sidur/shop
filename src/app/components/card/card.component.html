@@ -29,26 +29,26 @@
 								<ul class="cart_items_list">
 
 									<!-- Cart Item -->
-									<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start" *ngFor="let order of orderlist">
+									<li *ngFor="let item of order?.orderItem" class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
 										<div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
-											<div><div class="product_number"><i class="fa fa-minus-circle pointer" (click)="removeOrder(order)"></i></div></div>
-											<div><div class="product_image"><img [src]="order.item.photo" alt=""></div></div>
+											<div><div class="product_number"><i class="fa fa-minus-circle pointer" (click)="removeOrder(item)"></i></div></div>
+											<div><div class="product_image"><img [src]="item.product.photo" alt=""></div></div>
 											<div class="product_name_container">
-												<div class="product_name"><a (click)="viewProduct(order.item)" href="javascript:view(0)">{{order.item.name}}</a></div>
+												<div class="product_name"><a (click)="viewProduct(item.product)" href="javascript:view(0)">{{item.product.name}}</a></div>
 												<div class="product_text">Second line for additional info</div>
 											</div>
 										</div>
-										<div class="product_size product_text"><span>Size: </span>{{order.size}}</div>
-										<div class="product_price product_text"><span>Price: </span>${{order.item.price}}</div>
+										<div class="product_size product_text"><span>Size: </span>{{item.size}}</div>
+										<div class="product_price product_text"><span>Price: </span>${{item.product.price}}</div>
 										<div class="product_quantity_container">
 											<div class="product_quantity ml-lg-auto mr-lg-auto text-center">
 												
-												<div class="qty_sub qty_button trans_200 text-center" (click)="changeAmount(order, -1)"><span>-</span></div>
-                                                <input type="text" class="input_amount" [(ngModel)]="order.amount">
-												<div class="qty_add qty_button trans_200 text-center" (click)="changeAmount(order, 1)"><span>+</span></div>
+												<div class="qty_sub qty_button trans_200 text-center" (click)="changeAmount(item, -1)"><span>-</span></div>
+                                                <input type="text" class="input_amount" [(ngModel)]="item.amount">
+												<div class="qty_add qty_button trans_200 text-center" (click)="changeAmount(item, 1)"><span>+</span></div>
 											</div>
 										</div>
-										<div class="product_total product_text"><span>Total: </span>${{order.amount * order.item.price}}</div>
+										<div class="product_total product_text"><span>Total: </span>${{item.amount * item.product.price}}</div>
 									</li>
 								</ul>
 							</div>
@@ -77,9 +77,9 @@
 								<div class="shipping">
 									<div class="cart_extra_title">Shipping Method</div>
 									<ul>
-										<li class="shipping_option d-flex flex-row align-items-center justify-content-start" *ngFor="let method of shippingList">
+										<li class="shipping_option d-flex flex-row align-items-center justify-content-start" *ngFor="let item of shippingList">
 											<label class="radio_container">
-												<input type="radio" id="radio_1" name="shipping_radio" class="shipping_radio" (ngModelChange)="getShippingPrice(method)" [value]="method.id"  [(ngModel)]="shipping">
+												<input type="radio" id="radio_1" name="shipping_radio" class="shipping_radio" (ngModelChange)="getShippingPrice(item)" [value]="item"  [(ngModel)]="shipping">
 												<span class="radio_mark"></span>
 												<span class="radio_text">{{method.name}}</span>
 											</label>
@@ -97,18 +97,18 @@
 								<ul class="cart_extra_total_list">
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Subtotal</div>
-										<div class="cart_extra_total_value ml-auto">${{getTotalPrice()}}</div>
+										<div class="cart_extra_total_value ml-auto">${{order.subtotal}}</div>
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Shipping</div>
-										<div class="cart_extra_total_value ml-auto">${{selectShipping.price}}</div>
+										<div class="cart_extra_total_value ml-auto">$</div>
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Total</div>
-										<div class="cart_extra_total_value ml-auto">${{getTotalPrice() + selectShipping.price | number : '1.2-2'}}</div>
+										<div class="cart_extra_total_value ml-auto">$</div>
 									</li>
 								</ul>
-								<div class="checkout_button trans_200"><a href="checkout.html">proceed to checkout</a></div>
+								<div class="checkout_button trans_200"><a (click)="goToCheckout()" href="javascript:view(0)">proceed to checkout</a></div>
 							</div>
 						</div>
 					</div>

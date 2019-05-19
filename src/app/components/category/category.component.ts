@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
+import { OrderItem } from 'src/app/models/orderItem.model';
 
 
 
@@ -46,16 +47,17 @@ export class CategoryComponent implements OnInit {
         });
     }
 
-    saveOrder(product: Product) {
-        const order: Order = {
+   saveOrder(product: Product) {
+        const order: OrderItem = {
             amount: 1,
-            item: product,
+            product: product,
             size: 'S'
         };
-        this.orderService.addOrder(order);
+        this.orderService.addProduct(order);
     }
 
     addToFavourities(product: Product) {
         this.productServices.addToFavourities(product);
     }
+
 }

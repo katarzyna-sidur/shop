@@ -1,7 +1,15 @@
-import { Product } from './product.model';
+import { OrderItem } from './orderItem.model';
+import { User } from './userDeatils.model';
+import { Delivery } from './delivery.model';
+import { Coupon } from './coupon.model';
 
 export interface Order {
-    item: Product;
-    amount: number;
-    size: string;
+    id: number;
+    orderItem: OrderItem[];
+    adress: User;
+    payment: string;
+    delivery: Delivery;
+    coupon: Coupon;
+    subtotal: number;
+    total: number;
 }

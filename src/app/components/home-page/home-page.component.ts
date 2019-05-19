@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/product.model';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
+import { OrderItem } from 'src/app/models/orderItem.model';
 
 declare var $: any;
 
@@ -54,12 +55,12 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     }
 
     saveOrder(product: Product) {
-        const order: Order = {
+        const order: OrderItem = {
             amount: 1,
-            item: product,
+            product: product,
             size: 'S'
         };
-        this.orderService.addOrder(order);
+        this.orderService.addProduct(order);
     }
 
     addToFavourities(product: Product) {

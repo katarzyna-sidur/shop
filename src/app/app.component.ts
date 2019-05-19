@@ -14,11 +14,12 @@ import { Subject } from 'rxjs';
 export class AppComponent implements OnInit {
 
     title = 'shop';
-    orderlist: Array<Order>;
     cartTotalSum = 0;
     favouriteList: Array<Product>;
 
     products: Product[];
+
+    order: Order;
 
     searchValue = '';
 
@@ -30,16 +31,11 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.orderlist = this.orderService.getOrders();
-        this.orderService.sumTotal$().subscribe((result) => {
-            this.cartTotalSum = result;
+        this.orderService.getOrder$().subscribe((result) => {
+            this.order = result;
         });
         this.favouriteList = this.productService.getFavourities();
 
-    }
-
-    removeOrder(order: Order) {
-        this.orderService.removeOrder(order.item.$key);
     }
 
     viewProduct(product: Product) {

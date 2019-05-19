@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/product.model';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
+import { OrderItem } from 'src/app/models/orderItem.model';
 
 @Component({
     selector: 'app-favourite-products',
@@ -33,12 +34,12 @@ export class FavouriteProductsComponent implements OnInit {
     }
 
     FromFavToCart(product: Product) {
-        const order: Order = {
+        const order: OrderItem = {
             amount: 1,
-            item: product,
+            product: product,
             size: 'S'
         };
-        this.orderService.addOrder(order);
+        this.orderService.addProduct(order);
         this.removeFromList(product);
     }
 

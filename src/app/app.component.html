@@ -75,31 +75,31 @@
                     <a href id="basic-link" dropdownToggle (click)="false" aria-controls="basic-link-dropdown">
                         <div><img class="svg" src="assets/images/cart.svg"
                                 alt="https://www.flaticon.com/authors/freepik">
-                            <div [hidden]="!orderlist.length != 0">{{orderlist.length}}</div>
+                            <div [hidden]="!order?.orderItem.length != 0">{{order?.orderItem.length}}</div>
                         </div>
-                        <ul [hidden]="!orderlist.length != 0" id="dropdown-alignment" *dropdownMenu
+                        <ul [hidden]="!order?.orderItem.length != 0" id="dropdown-alignment" *dropdownMenu
                             class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="basic-link">
-                            <h4 class="cart_list_title">Products in cart ({{orderlist.length}})</h4>
+                            <h4 class="cart_list_title">Products in cart ({{order?.orderItem.length}})</h4>
                             <li class="divider dropdown-divider"></li>
                             <div class="shopping_cart">
-                                <div class="cart_box" *ngFor="let order of orderlist">
+                                <div class="cart_box" *ngFor="let item of order?.orderItem">
                                     <div class="message">
-                                        <div class="list_img"><img [src]="order.item.photo" class="img-responsive"
+                                        <div class="list_img"><img [src]="item.product.photo" class="img-responsive"
                                                 alt=""></div>
                                         <div class="list_desc">
-                                            <h4><a (click)="viewProduct(order.item)"
-                                                    href="javascript:view(0)">{{order.item.name}}</a></h4>
-                                            {{order.amount}} x<span class="actual">
-                                                ${{order.item.price}}</span>
+                                            <h4><a (click)="viewProduct(item.product)"
+                                                    href="javascript:view(0)">{{item.product.name}}</a></h4>
+                                            {{item.amount}} x<span class="actual">
+                                                ${{item.product.price}}</span>
                                         </div>
-                                        <i class="fa fa-times" (click)="removeOrder(order)"></i>
+                                        <i class="fa fa-times" (click)="removeOrder(item)"></i>
                                         <div class="clear"></div>
                                     </div>
                                 </div>
                             </div>
                             <li class="divider dropdown-divider"></li>
                             <li class="cartprice">
-                                <div class="total_price">Total Price: <b>${{cartTotalSum}}</b></div>
+                                <div class="total_price">Total Price: <b>$</b></div>
                             </li>
                             <li class="divider dropdown-divider"></li>
                             <div class="button button_continue trans_200"><a (click)="goCard()"

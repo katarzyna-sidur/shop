@@ -1,69 +1,62 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../models/order.model';
 import { Subject, of } from 'rxjs';
-import { Shipping } from '../models/shipping.model';
+import { Product } from '../models/product.model';
+import { OrderItem } from '../models/orderItem.model';
+import { Delivery } from '../models/delivery.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class OrderService {
 
-    private orderList: Array<Order> = [];
-    private totalPrice: Subject<number> = new Subject<number>();
 
-    private shippingOptions: Shipping[] =  [
-        {id: 1, name: 'Next day delivery', price: 4.99},
-        {id: 2, name: 'Standard delivery', price: 1.99},
-        {id: 3, name: 'Personal Pickup', price: 0.00}
-    ];
+    private order$: Subject<Order> = new Subject<Order>();
+    private order: Order = {
+        id: null,
+        orderItem: [],
+        adress: null,
+        payment: null,
+        delivery: null,
+        coupon: null,
+        subtotal: null,
+        total: null,
+    };
+
+
 
     constructor() {
-        this.totalPrice.next(0);
     }
 
-    getShippingOptions() {
-        return of(this.shippingOptions);
+    getOrder$() {
+        return this.order$.asObservable();
     }
 
-    getShippingObject(id: number) {
-       const obj = this.shippingOptions.find((data) => data.id === id);
-       return obj;
+    getOrder() {
+        return this.order;
     }
 
-    sumTotal$() {
-        return this.totalPrice.asObservable();
+    addProduct(item: OrderItem) {
+        this.order.orderItem.push(item);
+        this.recalculatePrice();
+        this.order$.next(this.order);
     }
 
-    getOrders() {
-        return this.orderList;
-    }
-
-    addOrder(order: Order) {
-        this.orderList.push(order);
-
-        this.totalPrice.next(this.sumTotal());
-    }
-
-    sumTotal() {
-        let total = 0;
-        this.orderList.forEach((item) => {
-            total += item.item.price * item.amount;
+    private recalculatePrice() {
+        let subtotal = 0;
+        this.order.orderItem.forEach((item) => {
+            subtotal += item.product.price * item.amount;
         });
-        return total = Math.round(total * 100) / 100;
+        this.order.subtotal = Math.round(subtotal * 100) / 100;
     }
 
-    changeAmount(item: Order, value: number) {
-        item.amount = item.amount + value;
-
-        this.totalPrice.next(this.sumTotal());
-    }
-
-    removeOrder(id: string) {
-        const i = this.orderList.findIndex(e => e.item.$key === id);
-        if (i !== -1) {
-            this.orderList.splice(i, 1);
-        }
-        this.totalPrice.next(this.sumTotal());
+    changeAmount(item: OrderItem, value: number) {
+        const found = this.order.orderItem.find(e => e.product.$key === item.product.$key);
+        found.amount = found.amount + value;
+        this.recalculatePrice();
+        this.order$.next(this.order);
     }
 
 }
+
+

@@ -1,0 +1,208 @@
+<div class="super_container_inner">
+    <div class="super_overlay"></div>
+
+    <!-- Home -->
+    <app-title-overlay [pageTitle]="pageTitle" [categoryTitle]="categoryTitle | uppercase"></app-title-overlay>
+
+    <!-- Checkout -->
+
+    <div class="checkout">
+        <div class="container">
+            <div class="row">
+
+                <!-- Billing -->
+                <div class="col-lg-6">
+                    <div class="billing">
+                        <div class="checkout_title">Billing</div>
+                        <div class="checkout_form_container">
+                            <form action="#" id="checkout_form" class="checkout_form">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <!-- Name -->
+                                        <input type="text" id="checkout_name" class="checkout_input form-control"
+                                            placeholder="First Name" required="required" name="first"
+                                            [(ngModel)]="user.firstName" #checkout_nameControl="ngModel"
+                                            [class.is-invalid]="checkout_nameControl.invalid  && checkout_nameControl.touched"
+                                            [class.is-valid]="checkout_nameControl.valid">
+                                        <span class="invalid-feedback"
+                                            *ngIf="checkout_nameControl.invalid  && checkout_nameControl.touched">
+                                            First Name is required
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Last Name -->
+                                        <input type="text" id="checkout_last_name" class="checkout_input form-control"
+                                            placeholder="Last Name" required="required" name="lastName"
+                                            [(ngModel)]="user.lastName" #lastNameControl="ngModel"
+                                            [class.is-invalid]="lastNameControl.invalid  && lastNameControl.touched"
+                                            [class.is-valid]="lastNameControl.valid">
+                                        <span class="invalid-feedback"
+                                            *ngIf="lastNameControl.invalid  && lastNameControl.touched">
+                                            Last Name is required
+                                        </span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <!-- Company -->
+                                    <input type="text" id="checkout_company" placeholder="Company"
+                                        class="checkout_input form-control" name="company" [(ngModel)]="user.company">
+                                </div>
+                                <div>
+                                    <!-- Country -->
+                                    <input type="text" id="checkout_country" class="checkout_input form-control"
+                                        placeholder="Country" required="required" name="country"
+                                        [(ngModel)]="user.country" #countryControl="ngModel"
+                                        [class.is-invalid]="countryControl.invalid  && countryControl.touched"
+                                        [class.is-valid]="countryControl.valid">
+                                    <span class="invalid-feedback"
+                                        *ngIf="countryControl.invalid  && countryControl.touched">
+                                        Country is required
+                                    </span>
+                                </div>
+                                <div>
+                                    <!-- Address -->
+                                    <input type="text" id="checkout_address" class="checkout_input form-control"
+                                        placeholder="Address Line 1" required="required" name="adress"
+                                        [(ngModel)]="user.adresss1" #adressControl="ngModel"
+                                        [class.is-invalid]="adressControl.invalid  && adressControl.touched"
+                                        [class.is-valid]="adressControl.valid">
+                                    <span class="invalid-feedback"
+                                        *ngIf="adressControl.invalid  && adressControl.touched">
+                                        Adress is required
+                                    </span>
+                                    <input type="text" id="checkout_address_2" class="checkout_input checkout_address_2"
+                                        placeholder="Address Line 2" [(ngModel)]="user.adresss2" name="adress2">
+                                </div>
+                                <div>
+                                    <!-- Zipcode -->
+                                    <input type="text" id="checkout_zipcode" class="checkout_input form-control"
+                                        placeholder="Zip Code" required="required" name="zipcode"
+                                        [(ngModel)]="user.zipCode" #zipCodeControl="ngModel"
+                                        [class.is-invalid]="zipCodeControl.invalid  && zipCodeControl.touched"
+                                        [class.is-valid]="zipCodeControl.valid">
+                                    <span class="invalid-feedback"
+                                        *ngIf="zipCodeControl.invalid  && zipCodeControl.touched">
+                                        Zip Code is required
+                                    </span>
+                                </div>
+                                <div>
+                                    <!-- City / Town -->
+                                    <input type="text" id="checkout_city" class="checkout_input form-control"
+                                        placeholder="City / Town" required="required" name="city"
+                                        [(ngModel)]="user.city" #cityControl="ngModel"
+                                        [class.is-invalid]="cityControl.invalid  && cityControl.touched"
+                                        [class.is-valid]="cityControl.valid">
+                                    <span class="invalid-feedback" *ngIf="cityControl.invalid  && cityControl.touched">
+                                        City is required
+                                    </span>
+                                </div>
+                                <div>
+                                    <!-- Province -->
+                                    <input type="text" id="checkout_province" class="checkout_input form-control"
+                                        placeholder="Province" required="required" name="province"
+                                        [(ngModel)]="user.province" #provinceControl="ngModel"
+                                        [class.is-invalid]="provinceControl.invalid  && provinceControl.touched"
+                                        [class.is-valid]="provinceControl.valid">
+                                    <span class="invalid-feedback"
+                                        *ngIf="provinceControl.invalid  && provinceControl.touched">
+                                        Province is required
+                                    </span>
+                                </div>
+                                <div>
+                                    <!-- Phone no -->
+                                    <input type="phone" id="checkout_phone" class="checkout_input form-control"
+                                        placeholder="Phone No." required="required" pattern="^^[0-9] {9}$" name="phone"
+                                        [(ngModel)]="user.phone" #phoneControl="ngModel"
+                                        [class.is-invalid]="phoneControl.invalid  && phoneControl.touched"
+                                        [class.is-valid]="phoneControl.valid">
+                                    <span class="invalid-feedback"
+                                        *ngIf="phoneControl.invalid  && phoneControl.touched">
+                                        Phone is required
+                                    </span>
+                                    <span class="invalid-feedback" *ngIf="phoneControl.errors?.pattern">
+                                        Phone is invalid</span>
+                                </div>
+                                <div>
+                                    <!-- Email -->
+                                    <input type="email" id="checkout_email" class="checkout_input form-control" placeholder="Email"
+                                        required="required" required [email]="user.email!==''" name="email"
+                                        [(ngModel)]="user.email" #emailControl="ngModel"
+                                        [class.is-invalid]="emailControl.invalid && emailControl.touched"
+                                        [class.is-valid]="emailControl.valid">
+                                    <span class="invalid-feedback"
+                                        *ngIf="emailControl.errors?.required && emailControl.touched">Email is required</span>
+                                    <span class="invalid-feedback" *ngIf="emailControl.errors?.email">Email is invalid </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Total -->
+                <div class="col-lg-6 cart_col">
+                    <div class="cart_total">
+                        <div class="cart_extra_content cart_extra_total">
+                            <div class="checkout_title">Cart Total</div>
+                            <ul class="cart_extra_total_list">
+                                <li class="d-flex flex-row align-items-center justify-content-start">
+                                    <div class="cart_extra_total_title">Subtotal</div>
+                                    <div class="cart_extra_total_value ml-auto">$</div>
+                                </li>
+                                <li class="d-flex flex-row align-items-center justify-content-start">
+                                    <div class="cart_extra_total_title">Shipping</div>
+                                    <div class="cart_extra_total_value ml-auto">Free</div>
+                                </li>
+                                <li class="d-flex flex-row align-items-center justify-content-start">
+                                    <div class="cart_extra_total_title">Total</div>
+                                    <div class="cart_extra_total_value ml-auto">$29.90</div>
+                                </li>
+                            </ul>
+                            <div class="payment_options">
+                                <div class="checkout_title">Payment</div>
+                                <ul>
+                                    <li
+                                        class="shipping_option d-flex flex-row align-items-center justify-content-start">
+                                        <label class="radio_container">
+                                            <input type="radio" id="radio_1" name="payment_radio" class="payment_radio">
+                                            <span class="radio_mark"></span>
+                                            <span class="radio_text">Paypal</span>
+                                        </label>
+                                    </li>
+                                    <li
+                                        class="shipping_option d-flex flex-row align-items-center justify-content-start">
+                                        <label class="radio_container">
+                                            <input type="radio" id="radio_2" name="payment_radio" class="payment_radio">
+                                            <span class="radio_mark"></span>
+                                            <span class="radio_text">Cash on Delivery</span>
+                                        </label>
+                                    </li>
+                                    <li
+                                        class="shipping_option d-flex flex-row align-items-center justify-content-start">
+                                        <label class="radio_container">
+                                            <input type="radio" id="radio_3" name="payment_radio" class="payment_radio"
+                                                checked>
+                                            <span class="radio_mark"></span>
+                                            <span class="radio_text">Credit Card</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="cart_text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so
+                                    dales.
+                                    Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut
+                                    consectetur lacus.</p>
+                            </div>
+                            <div class="checkout_button trans_200"><a href="checkout.html">place order</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <app-footer></app-footer>
+
+</div>
