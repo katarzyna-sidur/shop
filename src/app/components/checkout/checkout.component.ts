@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 import { User } from 'src/app/models/userDeatils.model';
+import { Order } from 'src/app/models/order.model';
 
 @Component({
     selector: 'app-checkout',
@@ -26,10 +27,19 @@ export class CheckoutComponent implements OnInit {
         email: null,
     };
 
+    order: Order;
+
     constructor(private orderService: OrderService) { }
 
     ngOnInit() {
+        this.order = this.orderService.getOrder();
+
+        this.orderService.getOrder$().subscribe((result) => {
+            this.order = result;
+        });
+
     }
+
 
 
 }

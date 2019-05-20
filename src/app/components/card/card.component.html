@@ -48,7 +48,7 @@
 												<div class="qty_add qty_button trans_200 text-center" (click)="changeAmount(item, 1)"><span>+</span></div>
 											</div>
 										</div>
-										<div class="product_total product_text"><span>Total: </span>${{item.amount * item.product.price}}</div>
+										<div class="product_total product_text"><span>Total: </span>${{item.amount * item.product.price  | number : '1.2-2'}}</div>
 									</li>
 								</ul>
 							</div>
@@ -69,21 +69,21 @@
 								<div class="cart_extra_title">Coupon code</div>
 								<div class="coupon_form_container">
 									<form action="#" id="coupon_form" class="coupon_form">
-										<input type="text" class="coupon_input" required="required">
-										<button class="coupon_button">apply</button>
+										<input  [(ngModel)]="coupon" type="text" class="coupon_input" required="required" name="coupon">
+										<button (click)="checkCoupon()" class="coupon_button">apply</button>
 									</form>
 								</div>
 								<div class="coupon_text">Phasellus sit amet nunc eros. Sed nec congue tellus. Aenean nulla nisl, volutpat blandit lorem ut.</div>
 								<div class="shipping">
 									<div class="cart_extra_title">Shipping Method</div>
 									<ul>
-										<li class="shipping_option d-flex flex-row align-items-center justify-content-start" *ngFor="let item of shippingList">
+										<li class="shipping_option d-flex flex-row align-items-center justify-content-start" *ngFor="let item of deliveryList">
 											<label class="radio_container">
-												<input type="radio" id="radio_1" name="shipping_radio" class="shipping_radio" (ngModelChange)="getShippingPrice(item)" [value]="item"  [(ngModel)]="shipping">
+												<input type="radio" id="radio_1" name="shipping_radio" class="shipping_radio"  [value]="item.id"  [(ngModel)]="deliveryId" (ngModelChange)="onSelectDelivery(item.id)">
 												<span class="radio_mark"></span>
-												<span class="radio_text">{{method.name}}</span>
+												<span class="radio_text">{{item.name}}</span>
 											</label>
-											<div class="shipping_price ml-auto">${{method.price}}</div>
+											<div class="shipping_price ml-auto">${{item.price}}</div>
 										</li>
 									</ul>
 								</div>
@@ -101,11 +101,15 @@
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Shipping</div>
-										<div class="cart_extra_total_value ml-auto">$</div>
+										<div class="cart_extra_total_value ml-auto">${{order.delivery?.price}}</div>
+									</li>
+                                    <li *ngIf="order.coupon" class="d-flex flex-row align-items-center justify-content-start">
+										<div class="cart_extra_total_title">Your coupon</div>
+										<div class="cart_extra_total_value ml-auto">-{{order.coupon.percent}}%</div>
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Total</div>
-										<div class="cart_extra_total_value ml-auto">$</div>
+										<div class="cart_extra_total_value ml-auto">${{order.total  | number : '1.2-2'}}</div>
 									</li>
 								</ul>
 								<div class="checkout_button trans_200"><a (click)="goToCheckout()" href="javascript:view(0)">proceed to checkout</a></div>

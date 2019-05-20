@@ -1,5 +1,5 @@
 export interface Coupon {
     id: number;
-    name: string;
+    code: string;
     percent: number;
 }
