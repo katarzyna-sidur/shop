@@ -19,10 +19,10 @@
                                 <div class="isotope_sorting_text"><span>Default Sorting</span><i
                                         class="fa fa-caret-down" aria-hidden="true"></i></div>
                                 <ul>
-                                    <li class="item_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'>
+                                    <li (click)="sort('$key')" class="item_sorting_btn">
                                         Default</li>
-                                    <li class="item_sorting_btn" data-isotope-option='{ "sortBy": "price" }'>Price</li>
-                                    <li class="item_sorting_btn" data-isotope-option='{ "sortBy": "name" }'>Name</li>
+                                    <li (click)="sort('price')" class="item_sorting_btn">Price</li>
+                                    <li (click)="sort('name')" class="item_sorting_btn">Name</li>
                                 </ul>
                             </div>
                         </div>

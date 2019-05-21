@@ -47,7 +47,7 @@ export class CategoryComponent implements OnInit {
         });
     }
 
-   saveOrder(product: Product) {
+    saveOrder(product: Product) {
         const order: OrderItem = {
             amount: 1,
             product: product,
@@ -58,6 +58,18 @@ export class CategoryComponent implements OnInit {
 
     addToFavourities(product: Product) {
         this.productServices.addToFavourities(product);
+    }
+
+    sort(option: string) {
+        this.products = this.products.sort((a, b) => {
+            if (a[option] > b[option]) {
+                return 1;
+            } else if (a[option] < b[option]) {
+                return -1;
+            } else if (a[option] === b[option]) {
+                return 0;
+            }
+        });
     }
 
 }
