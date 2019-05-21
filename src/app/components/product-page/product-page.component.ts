@@ -37,7 +37,7 @@ export class ProductPageComponent implements OnInit {
         this.router.navigate(['/category', name]);
     }
 
-      saveOrder(product: Product) {
+       saveOrder(product: Product) {
         const order: OrderItem = {
             amount: 1,
             product: product,
@@ -45,6 +45,7 @@ export class ProductPageComponent implements OnInit {
         };
         this.orderService.addProduct(order);
     }
+
 
     goCard() {
         this.router.navigate(['/card']);

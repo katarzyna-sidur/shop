@@ -5,6 +5,7 @@ import { Order } from './models/order.model';
 import { Product } from './models/product.model';
 import { ProductService } from './services/product.service';
 import { Subject } from 'rxjs';
+import { OrderItem } from './models/orderItem.model';
 
 @Component({
     selector: 'app-root',
@@ -41,6 +42,9 @@ export class AppComponent implements OnInit {
     viewProduct(product: Product) {
         this.router.navigate(['/product/', product.$key], {
         });
+    }
+     removeOrder(orderItem: OrderItem) {
+        this.orderService.removeOrder(orderItem.product.$key);
     }
 
     goCard() {

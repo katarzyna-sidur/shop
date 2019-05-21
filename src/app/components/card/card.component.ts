@@ -4,6 +4,7 @@ import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
 import { OrderItem } from '../../models/orderItem.model';
 import { Delivery } from 'src/app/models/delivery.model';
+import { Product } from 'src/app/models/product.model';
 
 
 @Component({
@@ -57,5 +58,18 @@ export class CardComponent implements OnInit {
 
     checkCoupon() {
         this.orderService.setCoupon(this.coupon);
+    }
+
+    backToCategory() {
+        this.router.navigate(['/home']);
+    }
+
+    removeOrder(orderItem: OrderItem) {
+        this.orderService.removeOrder(orderItem.product.$key);
+    }
+
+    viewProduct(product: Product) {
+        this.router.navigate(['/product/', product.$key], {
+        });
     }
 }

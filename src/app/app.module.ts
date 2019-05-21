@@ -19,6 +19,7 @@ import { FavouriteProductsComponent } from './components/favourite-products/favo
 import { ContactPageComponent } from './components/contact-page/contact-page.component';
 import { SearchComponent } from './components/search/search.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { SummaryComponent } from './components/summary/summary.component';
 
 
 
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     { path: 'contact', component: ContactPageComponent },
     { path: 'search/:term', component: SearchComponent },
     { path: 'checkout', component: CheckoutComponent },
+    { path: 'summary', component: SummaryComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -47,6 +49,7 @@ const appRoutes: Routes = [
         ContactPageComponent,
         SearchComponent,
         CheckoutComponent,
+        SummaryComponent,
     ],
     imports: [
         BrowserModule,
@@ -60,7 +63,7 @@ const appRoutes: Routes = [
         AngularFireDatabaseModule,
 
         BsDropdownModule.forRoot(),
-        TypeaheadModule.forRoot()
+        TypeaheadModule.forRoot(),
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -5,6 +5,8 @@ import { Product } from '../models/product.model';
 import { OrderItem } from '../models/orderItem.model';
 import { Delivery } from '../models/delivery.model';
 import { CouponService } from './coupon.service';
+import { Payment } from '../models/payment.model';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
     providedIn: 'root'
@@ -14,10 +16,22 @@ export class OrderService {
 
     private order$: Subject<Order> = new Subject<Order>();
     private order: Order = {
-        id: null,
+        $key: '',
         orderItem: [],
-        adress: null,
-        payment: null,
+        adress: {
+            firstName: null,
+            lastName: null,
+            company: null,
+            country: null,
+            adress1: null,
+            adress2: null,
+            zipCode: null,
+            city: null,
+            province: null,
+            phone: null,
+            email: null,
+        },
+        payment: { id: 1, name: 'Paypal' },
         delivery: { id: 3, name: 'Personal Pickup', price: 0.00 },
         coupon: null,
         subtotal: 0,
@@ -30,6 +44,11 @@ export class OrderService {
         { id: 3, name: 'Personal Pickup', price: 0.00 }
     ];
 
+    private paymentOptions: Payment[] = [
+        { id: 1, name: 'Paypal' },
+        { id: 2, name: 'Cash on Delivery' },
+        { id: 3, name: 'Credit Card' }
+    ];
 
     constructor(private couponService: CouponService) {
     }
@@ -91,7 +110,49 @@ export class OrderService {
         });
     }
 
+    removeOrder(id: string) {
+        const i = this.order.orderItem.findIndex(e => e.product.$key === id);
+        if (i !== -1) {
+            this.order.orderItem.splice(i, 1);
+        }
+        this.recalculatePrice();
+        this.order$.next(this.order);
+    }
 
+    getPaymentOptions() {
+        return of(this.paymentOptions);
+    }
+
+    setSelectedPayment(id: number) {
+        this.order.payment = this.paymentOptions.find(e => e.id === id);
+        this.order$.next(this.order);
+    }
+
+    resetOrder() {
+        this.order = {
+            $key: '',
+            orderItem: [],
+            adress: {
+                firstName: null,
+                lastName: null,
+                company: null,
+                country: null,
+                adress1: null,
+                adress2: null,
+                zipCode: null,
+                city: null,
+                province: null,
+                phone: null,
+                email: null,
+            },
+            payment: { id: 1, name: 'Paypal' },
+            delivery: { id: 3, name: 'Personal Pickup', price: 0.00 },
+            coupon: null,
+            subtotal: 0,
+            total: 0,
+        };
+        this.order$.next(this.order);
+    }
 }
 
 
