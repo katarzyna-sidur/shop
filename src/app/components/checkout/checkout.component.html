@@ -63,7 +63,7 @@
                                     <!-- Address -->
                                     <input type="text" id="checkout_address" class="checkout_input form-control"
                                         placeholder="Address Line 1" required="required" name="adress"
-                                        [(ngModel)]="order.adress.adresss1" #adressControl="ngModel"
+                                        [(ngModel)]="order.adress.adress1" #adressControl="ngModel"
                                         [class.is-invalid]="adressControl.invalid  && adressControl.touched"
                                         [class.is-valid]="adressControl.valid">
                                     <span class="invalid-feedback"
@@ -71,7 +71,7 @@
                                         Adress is required
                                     </span>
                                     <input type="text" id="checkout_address_2" class="checkout_input checkout_address_2"
-                                        placeholder="Address Line 2" [(ngModel)]="order.adress.adresss2" name="adress2">
+                                        placeholder="Address Line 2" [(ngModel)]="order.adress.adress2" name="adress2">
                                 </div>
                                 <div>
                                     <!-- Zipcode -->

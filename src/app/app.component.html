@@ -67,7 +67,7 @@
                 <!-- User -->
                 <div class="user"><a routerLink="/favourite" routerLinkActive="active">
                         <div><img src="assets/images/heart_2.svg" alt="https://www.flaticon.com/authors/freepik">
-                            <div [hidden]="!favouriteList.length != 0">{{favouriteList.length}}</div>
+                            <div [hidden]="favouriteList.length === 0">{{favouriteList.length}}</div>
                         </div>
                     </a></div>
                 <!-- Cart -->
@@ -75,9 +75,9 @@
                     <a href id="basic-link" dropdownToggle (click)="false" aria-controls="basic-link-dropdown">
                         <div><img class="svg" src="assets/images/cart.svg"
                                 alt="https://www.flaticon.com/authors/freepik">
-                            <div [hidden]="!order?.orderItem.length != 0">{{order?.orderItem.length}}</div>
+                            <div [hidden]="order?.orderItem.length === 0">{{order?.orderItem.length}}</div>
                         </div>
-                        <ul [hidden]="!order?.orderItem.length != 0" id="dropdown-alignment" *dropdownMenu
+                        <ul [hidden]="order?.orderItem.length === 0" id="dropdown-alignment" *dropdownMenu
                             class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="basic-link">
                             <h4 class="cart_list_title">Products in cart ({{order?.orderItem.length}})</h4>
                             <li class="divider dropdown-divider"></li>
