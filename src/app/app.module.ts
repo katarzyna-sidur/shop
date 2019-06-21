@@ -56,7 +56,7 @@ const appRoutes: Routes = [
         AppRoutingModule,
         FormsModule,
 
-        RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled'}),
+        RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled', useHash: true}),
 
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFirestoreModule,
